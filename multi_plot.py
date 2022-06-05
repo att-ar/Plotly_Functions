@@ -30,9 +30,7 @@ def data_plot(data = None, x = None, y = None,
                       color = ["mintcream", "darkorchid"]
                       )
 
-    ****Note:if only one DataFrame and one column for the x-axis are needed then use line_plot() instead.
-             line_plot() can accept multiple columns for the y-axis.
-             This function will not work well for simple plots.
+    This function will not work well for simple plots.
 
     This function takes one or more DataFrames, columns from the respective DataFrames to be plot on x and y-axes.
     It also takes the mode of plotting desired for the DataFrames and optional keyword arguments.
