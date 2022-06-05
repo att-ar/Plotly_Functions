@@ -16,7 +16,7 @@ def data_plot(data = None, x = None, y = None,
               x_title = None, y_title = None, title = None,
               **kwargs):
     '''
-    list of pandas.DataFrame, list of str, list of str, list of str, kwargs -> plotly plot object
+    list of pandas.DataFrame, list of str, list of str, str, str, str, kwargs -> plotly plot object
 
     Precondition: If an argument has multiple objects, they must be in a list (can have nested lists).
                   The order of the arguments must be in the same order as the DataFrames.
@@ -134,12 +134,18 @@ def data_plot(data = None, x = None, y = None,
         if no value is passed, plotly will do it automatically.
 
 
-    >>>df1 = generate_ocv_pts("JMFM_12_SOC_OCV_Test_220411.txt", to_csv = False)
-    >>>df2 = ocv_estimate(df1, to_csv = False)
+    >>>df1 = pd.DataFrame(data = {"SOC-Chg": np.linspace(100,0,105),
+                                  "OCV-Chg": np.linspace(3.65,2.21,105),
+                                  "SOC-Dis": np.linspace(100,0,105),
+                                  "OCV-Chg": np.linspace(3.41,2.12,105)
+                                  })
+    >>>df2 = pd.DataFrame(data = {"SOC": np.linspace(100,0,101),
+                                  "OCV": np.linspace(3.62,2,101)
+                                  })
     >>>data_plot(data = [df1,df2],
-          x=[ ["SOC-Chg","SOC-Dis"],"SOC" ],
+          x = [ ["SOC-Chg","SOC-Dis"], "SOC" ],
           y = [ ["OCV-Chg","OCV-Dis"], "OCV" ],
-          title = "JMFM-12 OCV vs. SOC Curve",
+          title = "Battery OCV vs. SOC Curve",
           x_title = "SOC (%)",
           y_title = "OCV (V)",
           mode = [ ["markers","markers"] ],
